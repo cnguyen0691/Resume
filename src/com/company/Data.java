@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Data {
 
@@ -12,10 +11,10 @@ public class Data {
    private ArrayList<Skill> s;
 
 // ArrayList<Education> e, ArrayList<Experience> job,
-    public Data( Personal p,ArrayList<Skill> s){
+    public Data( Personal p, ArrayList<Skill> s){
       this.p = p;
-//        this.e = e;
-//        this.job = job;
+//      this.e = e;
+//            this.job = job;
         this.s = s;
     }
     public Personal getP() {
@@ -38,7 +37,7 @@ public class Data {
 
     @Override
     public String toString(){
-        return "Data: " +this.p+"\t" + this.s + "\n";
+        return "Data: " +getP()+"\t" + getS()+ "\n";
     }
 
 

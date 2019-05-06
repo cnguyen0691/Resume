@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        boolean ans=false;
-        String resume="";
+        boolean ans = false;
+        String resume = "";
         ArrayList<Data> dataList = new ArrayList<Data>();
         //Input resume
         while (!ans) {
@@ -86,43 +86,92 @@ public class Main {
                     System.out.println("Skill: " + "\n" + skItem);
 
                 }
-                Data data = new Data(person1,skill);
+                Data data = new Data(person1, skill);
                 dataList.add(data);
+
 
             } else if (resume.equalsIgnoreCase("y")) {
                 System.out.println("Good Luck");
                 break;
             }
         }
-        //Recruiter looking for candidate
-        System.out.println("Are you a recruiter?(y/n): ");
-        String keys = input.next();
-        Recruiter key = new Recruiter();
-        if(keys.equalsIgnoreCase("y")) {
-            System.out.println("Enter the key: ");
-            key.setKey(input.next());
-        }else {
-            System.out.println("Have a good day!");
-        }
+        //Allow a person to change their name, e-mail address and/or phone number
+        System.out.println("Do you wanna change information?(y/n):");
+        String fixResume = input.next();
+        String change = "";
 
-        String keyword = key.getKey();
-        HashMap<String, ArrayList<Data>> map = new HashMap<>();
-        map.put(keyword, dataList );
-        for (Data s : dataList ){
-            for (int i=0; i<s.getS().size(); i++) {
+        if (fixResume.equalsIgnoreCase("y")) {
+            System.out.println("Your Name: ");
+            String putName = input.next();
+            System.out.println("Do you want to change which information:(Name, Email, Phone): ");
+            String c = input.next();
+            for (int i = 0; i < dataList.size(); i++) {
+                if (putName.equalsIgnoreCase(dataList.get(i).getP().getName())) {
+                    if (c.equalsIgnoreCase("name")) {
+                        System.out.println("Enter new Name: ");
+                        change = input.next();
+                        if (dataList.get(i).getP().getName().contains(putName)) {
+                            dataList.get(i).getP().setName(change);
 
-                if (keyword.equalsIgnoreCase(s.getS().get(i).getSkills())) {
-                    System.out.println(s.getP()+ "\n" + s.getS());
-                }else {
-                    System.out.println("Not found keyword");
+                        }
+                    } else if (c.equalsIgnoreCase("email")) {
+                        System.out.println("Enter new Email: ");
+                        String newEmail = input.next();
+                        if (dataList.get(i).getP().getName().contains(putName)) {
+                            dataList.get(i).getP().setEmail(newEmail);
+                        }
+                    } else if (c.equalsIgnoreCase("Phone")) {
+                        System.out.println("Enter new Phone: ");
+                        String newPhone = input.next();
+                        if (dataList.get(i).getP().getName().contains(putName)) {
+                            dataList.get(i).getP().setPhone(newPhone);
+                        }
+                    }
                 }
+                System.out.println(dataList.get(i));
             }
 
-
+        }  else if (fixResume.equalsIgnoreCase("n")) {
+            System.out.println("Thank you");
         }
 
 
+            //Recruiter looking for candidate
+        System.out.print("Are you a recruiter?(y/n): ");
+        String keys = input.next();
+        Recruiter key = new Recruiter();
+        int count = 0;
+        if (keys.equalsIgnoreCase("y")) {
+            System.out.println("Enter the key: ");
+            key.setKey(input.next());
+
+            String keyword = key.getKey();
+            HashMap<String, ArrayList<Data>> map = new HashMap<>();
+            map.put(keyword, dataList);
+            for (Data s : dataList) {
+                for (int i = 0; i < s.getS().size(); i++) {
+                    if (keyword.equalsIgnoreCase(s.getS().get(i).getSkills())) {
+                        System.out.println(s.getP() + "\n" + s.getS());
+                        count++;
+
+                    }
+                }
+            }
+            if (count == 0) {
+                System.out.println("Not found keyword");
+            }
+        }
+        else {
+            System.out.println("Have a good day!");
+        }
     }
 }
+
+
+
+
+
+
+
 
 

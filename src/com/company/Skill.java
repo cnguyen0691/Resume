@@ -29,7 +29,6 @@ public class Skill {
 
     @Override
     public String toString(){
-        return this.skills + ": "+
-                this.progiciency;
+        return  getSkills() + ": "+ getProgiciency();
     }
 }

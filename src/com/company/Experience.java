@@ -60,11 +60,11 @@ public class Experience {
 
     @Override
     public String toString(){
-        return  this.Company + "\n "+
-                this.jobTitle+"\n "+
-                this.jobDescription+ "\n "+
-                this.startDate+"\n "+
-                this.endDate;
+        return  getCompany() + "\n "+
+                getJobTitle()+"\n "+
+                getJobDescription()+ "\n "+
+                getStartDate()+"\n "+
+                getEndDate();
     }
 
 }

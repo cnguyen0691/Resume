@@ -18,7 +18,7 @@ public class Recruiter {
     }
     @Override
     public String toString(){
-        return this.key;
+        return getKey();
     }
 
 }

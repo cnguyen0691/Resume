@@ -31,13 +31,13 @@ public class Main {
                 ArrayList<Education> eduList = new ArrayList();
                 for (int x = 1; x <= inputNumDeg; x++) {
                     Education edu = new Education();
-                    System.out.println("Enter degree" + x + " : ");
+                    System.out.println("Enter degree " + x + " : ");
                     edu.setDegree(input.next());
-                    System.out.println("Enter university" + x + " : ");
+                    System.out.println("Enter university " + x + " : ");
                     edu.setUniversity(input.next());
-                    System.out.println("Enter major" + x + " : ");
+                    System.out.println("Enter major " + x + " : ");
                     edu.setMajor(input.next());
-                    System.out.println("Enter year" + x + " : ");
+                    System.out.println("Enter year " + x + " : ");
                     edu.setYear(input.nextInt());
                     eduList.add(edu);
                 }
@@ -47,15 +47,25 @@ public class Main {
                 ArrayList<Experience> job = new ArrayList();
                 for (int x = 1; x <= inputNumJob; x++) {
                     Experience exp = new Experience();
-                    System.out.println("Enter Name Company" + x + " : ");
+                    System.out.println("Enter Name Company " + x + " : ");
                     exp.setCompany(input.next());
-                    System.out.println("Enter Job Titile" + x + " : ");
+                    System.out.println("Enter Job Titile " + x + " : ");
                     exp.setJobTitle(input.next());
-                    System.out.println("Enter Job Duty" + x + " : ");
-                    exp.setJobDescription(input.next());
-                    System.out.println("Enter start year" + x + " : ");
+//                    System.out.println("Enter Job Duty " + x + " : ");
+//                    String ans1 = input.next();
+//                    exp.addDescr(input.next());
+//                    System.out.println("Do you wanna add another Job Duty?(y/n): ");
+//                    String ans2 = input.next();
+//                    if (ans2.equalsIgnoreCase("y")){
+//                        System.out.println("Enter Job Duty " + x + " : ");
+//                        String ans3 = input.nextLine();
+//                        exp.addDescr(ans3);
+//                    }else {
+//                        break;
+//                    }
+                    System.out.print("Enter start year "  + x + " : ");
                     exp.setStartDate(input.next());
-                    System.out.println("Enter end year" + x + " : ");
+                    System.out.print("Enter end year " + x + " : ");
                     exp.setEndDate(input.next());
                     job.add(exp);
                 }
@@ -68,7 +78,7 @@ public class Main {
                     Skill sk = new Skill();
                     System.out.println("Enter skill" + x + " : ");
                     sk.setSkills(input.next());
-                    System.out.println("Enter proficience" + x + " : ");
+                    System.out.println("Enter proficiency" + x + " : ");
                     sk.setProgiciency(input.next());
                     skill.add(sk);
                 }
@@ -96,10 +106,10 @@ public class Main {
             }
         }
         //Allow a person to change their name, e-mail address and/or phone number
+        System.out.println("====================================================");
         System.out.println("Do you wanna change information?(y/n):");
         String fixResume = input.next();
         String change = "";
-
         if (fixResume.equalsIgnoreCase("y")) {
             System.out.println("Your Name: ");
             String putName = input.next();
@@ -112,31 +122,34 @@ public class Main {
                         change = input.next();
                         if (dataList.get(i).getP().getName().contains(putName)) {
                             dataList.get(i).getP().setName(change);
-
+                            System.out.println(dataList.get(i).getP());
                         }
                     } else if (c.equalsIgnoreCase("email")) {
                         System.out.println("Enter new Email: ");
                         String newEmail = input.next();
                         if (dataList.get(i).getP().getName().contains(putName)) {
                             dataList.get(i).getP().setEmail(newEmail);
+                            System.out.println(dataList.get(i).getP());
                         }
                     } else if (c.equalsIgnoreCase("Phone")) {
                         System.out.println("Enter new Phone: ");
                         String newPhone = input.next();
                         if (dataList.get(i).getP().getName().contains(putName)) {
                             dataList.get(i).getP().setPhone(newPhone);
+                            System.out.println(dataList.get(i).getP());
                         }
                     }
                 }
-                System.out.println(dataList.get(i));
-            }
 
+            }
+        //Dont want to change resume
         }  else if (fixResume.equalsIgnoreCase("n")) {
             System.out.println("Thank you");
         }
 
 
             //Recruiter looking for candidate
+        System.out.println("================================================");
         System.out.print("Are you a recruiter?(y/n): ");
         String keys = input.next();
         Recruiter key = new Recruiter();
@@ -144,10 +157,7 @@ public class Main {
         if (keys.equalsIgnoreCase("y")) {
             System.out.println("Enter the key: ");
             key.setKey(input.next());
-
             String keyword = key.getKey();
-            HashMap<String, ArrayList<Data>> map = new HashMap<>();
-            map.put(keyword, dataList);
             for (Data s : dataList) {
                 for (int i = 0; i < s.getS().size(); i++) {
                     if (keyword.equalsIgnoreCase(s.getS().get(i).getSkills())) {
@@ -157,10 +167,13 @@ public class Main {
                     }
                 }
             }
+
+            //Not file keyword
             if (count == 0) {
                 System.out.println("Not found keyword");
             }
         }
+        //Not a recruiter
         else {
             System.out.println("Have a good day!");
         }

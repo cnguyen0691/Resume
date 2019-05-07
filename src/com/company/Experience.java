@@ -1,16 +1,18 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Experience {
     private String Company;
     private String jobTitle;
-    private String jobDescription;
+    private ArrayList<String> jobDescription;
     private String startDate;
     private String endDate;
     public Experience(){
 
     }
 
-    public Experience(String Company, String jobTitle, String jobDescription, String startDate, String endDate){
+    public Experience(String Company, String jobTitle, ArrayList<String> jobDescription, String startDate, String endDate){
         this.Company= Company;
         this.jobTitle=jobTitle;
         this.jobDescription=jobDescription;
@@ -34,14 +36,6 @@ public class Experience {
         this.jobTitle = jobTitle;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
-    }
-
     public String getStartDate() {
         return startDate;
     }
@@ -57,6 +51,19 @@ public class Experience {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public ArrayList<String> getJobDescription() {
+        return jobDescription;
+    }
+
+    public void addDescr(String descr){
+        jobDescription.add(descr);
+    }
+
+    public void setJobDescription(ArrayList<String> jobDescription) {
+        this.jobDescription = jobDescription;
+    }
+
 
     @Override
     public String toString(){
